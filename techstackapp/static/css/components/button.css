@@ -1,0 +1,44 @@
+.btn-orange {
+    display: block;
+    margin: .5rem auto;
+    padding: 1.5rem 4rem;
+    text-transform: uppercase;
+    border-radius: 10rem;
+    transition: all .2s;
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: inherit;
+    color: #fff;
+    border: none;
+    background-color: var(--color-tertiary);
+    cursor: pointer;
+}
+
+.btn-orange:hover, .signup__btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+}
+
+
+.btn-orange:active, .signup__btn:active {
+    box-shadow: 0rem .5rem 1rem rgba(0,0,0,.15);
+    transform: translateY(0);
+}
+
+.signup__btn,
+.signup__btn:link,
+.signup__btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    background-color: var(--color-tertiary);
+    padding: 1.2rem 4rem;
+    transition: all .2s;
+    color: #fff;
+    align-self: center;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+}

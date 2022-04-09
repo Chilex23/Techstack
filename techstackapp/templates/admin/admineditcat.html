@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/icon-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Edit Category</title>
+</head>
+<body style="background-color: #eee;">
+    <div class="container-fluid">
+        <div class="row" style="margin-bottom: 2rem;">
+            <nav class="nav">
+                <label for="Logo" class="Logo"><a href="#"><img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="img-fluid logo-brand"></a>Techstack</label>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    Menu <i class="fas fa-bars"></i>
+                </label>
+                <ul class="nav-link">
+                    <li class="nav-link-item"><a href="{{url_for('admin_home')}}">Back to Dashboard</a></li>
+                    <li class="nav-link-item"><a href="{{url_for('admin_logout')}}">Log Out</a></li>
+                </ul>
+           </nav>
+        </div>
+
+       
+        <div class="row" style="margin-top: 6rem;">
+            <div class="col-12 col-md-8" style="margin: 0 auto;">
+                <h1 class="product__heading mt-3">Edit category</h1>
+                {% if msg %}
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                
+                    <p style="font-size: 2.2rem; font-weight: 900;" class="text-center">{{msg[0]}}</p>
+                </div>
+                {% endif %}
+                <form action="{{url_for('edit_category', id=cat.cat_id )}}" class="form" enctype="multipart/form-data" method="post">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                    <label for="image" class="form__label">Upload Category Image</label>
+                    <input type="file" class="form__input" id="image" name="image" required value="{{cat.cat_img}}">
+                    <label for="catname" class="form__label">Category Name</label>
+                    <input type="text" class="form__input" id="catname" name="catname" placeholder="Category Name" required value="{{cat.cat_name}}">
+                    <button type="submit" class="btn-orange mt-5">Edit Category</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

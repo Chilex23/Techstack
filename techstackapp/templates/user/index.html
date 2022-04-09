@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/icon-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Techstack &rarr; Your Online Market Place For All Things Tech Gadgets</title>
+</head>
+<body style="background-color: #eee;">
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="nav">
+                <label for="Logo" class="Logo"><a href="#"><img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="img-fluid logo-brand"></a>Techstack</label>
+				
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fas fa-bars"></i>
+                </label>
+				<!---->
+				<li class="nav-link-item" id="cart-icon"><a href="{{url_for('view_cart')}}">
+					<div class="user-nav__icon-box"> 
+						<i class="fas fa-cart-plus icon"></i>
+						<span class="user-nav__notification" id="c">{{ cart_len }}</span>
+					</div>
+				</a></li>
+				{% if session.get('loggedin') != None %}
+				<a href="{{url_for('userhome')}}" style="color: white; text-decoration: none;" id="user">
+					{% if userdeets.user_img %}
+					<img src="/static/image/users/{{userdeets.user_img}}" alt="User photo" class="user-nav__user-photo">
+					<span class="user-nav__user-name">{{userdeets.user_username}}</span>
+					{% else %}
+					
+					<span class="user-nav__user-name"><i class="fas fa-user-alt search__icon me-3"></i>{{userdeets.user_username}}</span>
+					{% endif %}
+				 </a>
+				{% else %}
+				<li class="nav-link-item" id="sign"><a href="{{url_for('userlogin')}}">Sign In</a></li>
+				{%endif%}
+				
+                <ul class="nav-link">
+                    <li class="nav-link-item active-link"><a href="{{ url_for('home')}}">Home</a></li>
+                    <li class="nav-link-item"><a href="{{ url_for('buy')}}">Buy Now</a></li>
+                    <li class="nav-link-item"><a href="{{ url_for('hire')}} ">Hire Now</a></li>
+                    <li class="nav-link-item"><a href="{{ url_for('view_allcategory') }}">Categories</a></li>
+					
+					{% if session.get('loggedin') != None %}
+                    <li class="nav-link-item"><a href="{{url_for('logout') }}">Logout</a></li>
+					{%endif%}
+                </ul>
+                <!---->
+                <input type="checkbox" id="check2">
+                <label class="nav-search" for="check2"><i class="fas fa-search nav-icon"></i></label>
+				
+                <!---->
+                <div class="nav-end" id="links2">
+                    <form class="search__box" action="/user/search" method="post">
+						<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                        <input class="me-2 search" type="search" placeholder="Search" aria-label="Search" name="search">
+                        <button class="search__btn" type="submit"><i class="fas fa-search search__icon"></i></button>
+                    </form>
+                     <div class="user-nav__user">
+						<a href="{{url_for('view_cart')}}" id="cart-vis">
+							<div class="user-nav__icon-box"> 
+								<i class="fas fa-cart-plus icon"></i>
+								<span class="user-nav__notification" id="c">{{ cart_len }}</span>
+							</div>
+						</a>
+
+						{% if session.get('loggedin') != None %}
+                        <a href="{{url_for('userhome')}}" style="color: white; text-decoration: none;" id="log">
+							{% if userdeets.user_img %}
+                            <img src="/static/image/users/{{userdeets.user_img}}" alt="User photo" class="user-nav__user-photo">
+                            <span class="user-nav__user-name">{{userdeets.user_username}}</span>
+                            {% else %}
+                            
+                            <span class="user-nav__user-name"><i class="fas fa-user-alt search__icon me-3"></i>{{userdeets.user_username}}</span>
+                            {% endif %}
+                         </a>
+						 {% else %}
+						 <li class="nav-link-item" id="log"><a href="{{url_for('userlogin')}}">Sign In</a></li>
+                    	 <li class="nav-link-item" id="log"><a href="{{url_for('register')}}">Sign Up</a></li>
+						 {% endif %}
+                    </div>
+                </div>
+           </nav>
+		</div>
+		<!--Banner Image -->
+		<div class="row banner" style="background-color: #fff;">
+			<div class="col">
+				<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-inner banner__item">
+					  <div class="carousel-item active" style="background-color: white;">
+						<img src="{{url_for('static', filename='image/vrwoman.png')}}" class="banner__img" alt="...">
+						<div class="banner__title">
+							<h1 class="banner__title-header">New Gadget Collection just for you</h1>
+							<p class="banner__text">New gadget collecton that is sure to have interested in shopping here. You can't get this set of collection from any other platform.</p>
+							<a href="#product-section" class="banner__btn">Shop Now</a>
+						</div>
+					  </div>
+					  <div class="carousel-item banner__item">
+						<img src="{{url_for('static', filename='image/Visionary technology-bro.png')}}" class="banner__img" alt="...">
+						<div class="banner__title">
+							<h1 class="banner__title-header">We have what you are looking for</h1>
+							<p class="banner__text">We have all that you looking. You name it and we have it. That is beauty of Techstack, finding any tech gadget of your heart's desire.</p>
+							<a href="#product-section" class="banner__btn">Shop Now</a>
+						</div>
+					  </div>
+					  <div class="carousel-item banner__item">
+						<img src="{{url_for('static', filename='image/techstack.png')}}" class="banner__img" alt="...">
+						<div class="banner__title">
+							<h1 class="banner__title-header">High end gadgets at the click of a mouse</h1>
+							<p class="banner__text">No need of all the hassle of worrying about the quality of your purchased gadget. Techstack offers quality high-end gadgets all in one place.</p>
+							<a href="#product-section" class="banner__btn">Shop Now</a>
+						</div>
+					  </div>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+					  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					  <span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+					  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					  <span class="visually-hidden">Next</span>
+					</button>
+				  </div>
+			</div>
+		</div>
+
+		<!--Product Section -->
+		<main>
+			<div class="row product-bg" id="product-section">
+				<h1 class="product__heading">Featured Products</h1>
+				
+				<div class="col-12">
+					<!--Second row -->
+					<div class="rowC product">
+						{% for i in all_products %}
+						{% if i.product_status != 'Sold' %}
+						<div class="col-1-of-4">
+							<!-- Card Container -->
+							<div class="cardC">
+								<div class="img__box">
+									<img src="/static/image/products/{{i.product_img}}" alt="Product" class="card__img img-fluid">
+									<span class="card__type">For {{i.product_type}}</span>
+								</div>
+								
+								<div class="card__details">
+									<h3 class="card__heading">Name</h3>
+									<p class="card__name">{{i.product_name}}</p>
+									{% if i.product_type == 'Sale' %}
+									<h3 class="card__heading">Price</h3>
+									<p class="card__price"> {{i.product_price}}</p>
+									{% else %}
+									<h3 class="card__heading">Hire Period</h3>
+									<p style="font-size: 2rem; font-weight: 900;">{{i.hire_period}} days</p>
+									{% endif %}
+									<a href="/product/{{i.product_id}}" class="card__btn">View item</a>
+									{% if i.product_type == 'Sale'%}
+									<button class="card__btn" id="cart">
+										<input type="hidden" name="cartId" id="cartId" value="{{i.product_id}}">
+										Add to Cart
+									</button>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						{%endif%}
+						{% endfor %}
+						
+						<!---->
+					</div>	
+				</div>
+				<div class="col-12 flex">
+					<a href="{{url_for('buy')}}" class="more">View more products</a>
+				</div>
+			
+			</div>
+			<!--End of Product -->
+			<!--Second Section -->
+			<div class="row product-bg" id="product-section">
+				<h1 class="product__heading">Flash Sales</h1>
+				
+				<div class="col-12">
+					<!--Second row -->
+					<div class="rowC product">
+						{% for i in flash_sales %}
+						{% if i.product_status != 'Sold' %}
+						<div class="col-1-of-4">
+							<!-- Card Container -->
+							<div class="cardC">
+								<div class="img__box">
+									<img src="/static/image/products/{{i.product_img}}" alt="Product" class="card__img img-fluid">
+									<span class="card__type">For {{i.product_type}}</span>
+								</div>
+								
+								<div class="card__details">
+									<h3 class="card__heading">Name</h3>
+									<p class="card__name">{{i.product_name}}</p>
+									{% if i.product_type == 'Sale' %}
+									<h3 class="card__heading">Price</h3>
+									<p class="card__price">{{i.product_price}}</p>
+									{% else %}
+									<h3 class="card__heading">Hire Period</h3>
+									<p style="font-size: 2rem; font-weight: 900;">{{i.hire_period}} days</p>
+									{% endif %}
+									<a href="/product/{{i.product_id}}" class="card__btn">View item</a>
+									{% if i.product_type == 'Sale'%}
+									<button class="card__btn" id="cart">
+										<input type="hidden" name="cartId" id="cartId" value="{{i.product_id}}">
+										Add to Cart
+									</button>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						{%endif%}
+						{% endfor %}
+						
+						<!---->
+					</div>	
+				</div>
+				<div class="col-12 flex">
+					<a href="{{url_for('buy')}}" class="more">View more products</a>
+				</div>
+			
+			</div>
+			<!--End of Product -->
+			<!-- Offers -->
+			<section class="offer">
+				<div class="row">
+					<div class="col">
+						<h1 class="product__heading">What we offer</h1>
+							<div class="rowC">
+								<div class="col-1-of-2">
+									<div class="feature-box">
+										<i class="fa-solid fa-hand-fist feature-box__icon"></i>
+										<h3 class="feature-box__heading">Reliability</h3>
+										<p class="feature-box__text">
+											We are reliable in every sense of the word.
+										</p>
+									</div>
+								</div>
+							
+								<div class="col-1-of-2">
+									<div class="feature-box">
+										<i class="fa-solid fa-calendar-days feature-box__icon"></i>
+										<h3 class="feature-box__heading">24/7 Services</h3>
+										<p class="feature-box__text">
+											We are always up and running 24/7.
+										</p>
+									</div>
+								</div>
+							
+							</div>
+								
+								<div class="rowC">
+									<div class="col-1-of-2">
+										<div class="feature-box">
+											<i class="fa-solid fa-face-grin-hearts feature-box__icon"></i>
+											<h3 class="feature-box__heading">No Stress</h3>
+											<p class="feature-box__text">
+												All the tech gadgets you need in one place.
+											</p>
+										</div>
+									</div>
+								
+									<div class="col-1-of-2">
+										<div class="feature-box">
+											<i class="fa-solid fa-thumbs-up feature-box__icon"></i>
+											<h3 class="feature-box__heading">Quality</h3>
+											<p class="feature-box__text">
+												We only offer quality services and products.
+											</p>
+										</div>
+									</div>
+								</div>
+					</div>
+				</div>
+				<!-- End of Offer -->
+			</section>
+		</main>	
+		<!-- Footer container -->
+		<footer class="footer">
+			<div class="footer__img-box">
+				<img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="footer__img">
+			</div>
+			<div class="links">
+				 <div class="footer__link-box">
+					 <h3 class="footer__heading">ABOUT US</h3>
+					 <ul class="footer__nav">
+						 <li class="footer__link"><a class ="link" href="#">About Us</a></li>
+						 <li class="footer__link"><a class ="link" href="#">Terms and Conditions</a></li>
+						 <li class="footer__link"><a class ="link" href="#">Privacy and Cookie notice</a></li>
+				 
+					 </ul>
+				 </div>
+				 <div class="footer__link-box">
+					 <h3 class="footer__heading">LET US HELP YOU</h3>
+					 <ul class="footer__nav">
+						 <li class="footer__link"><a class ="link" href="#">Report a product</a></li>
+						 <li class="footer__link"><a class ="link" href="#">Report a vendor</a></li>
+						 <li class="footer__link"><a class ="link" href="#">How to buy a product</a></li>
+					   
+					 </ul>
+				 </div>
+				 
+			</div>
+		   
+			 <p class="footer__terms">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui mollitia amet aut est error, blanditiis nobis culpa quo reprehenderit tempora nihil! Natus praesentium ex impedit fuga ab excepturi fugit temporibus?</p>
+			 <h3>JOIN US ON</h3>
+			 <div class="icon-box">
+				 <i class="fab fa-facebook icon"></i>
+				 <i class="fab fa-twitter icon"></i>
+				 <i class="fab fa-youtube icon"></i>
+			 </div>
+			 <p class="footer__text">&copy; By Chima Onumaegbu. All rights reserved</p>
+		</footer>
+	</div>
+   
+    <!--<a href="login.html">Login</a>-->
+	<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+	<script src="{{url_for('static', filename='js/app.js')}}"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

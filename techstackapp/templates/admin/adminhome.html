@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/icon-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Admin Dashboard</title>
+</head>
+<body style="background-color: #eee;">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="nav">
+                <label for="Logo" class="Logo"><a href="#"><img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="img-fluid logo-brand"></a>Techstack</label>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    Menu <i class="fas fa-bars"></i>
+                </label>
+                <ul class="nav-link">
+                    <li class="nav-link-item"><a href="{{url_for('admin_logout')}}">Log Out</a></li>
+                </ul>
+                <!---->
+                <input type="checkbox" id="check2">
+                <label class="nav-search" for="check2"><i class="fas fa-search nav-icon"></i></label>
+                <!---->
+           </nav>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 dashboard-container" style="margin-top: 1rem;">
+                <h1 class="product__heading mt-3">Welcome to the Admin Dashboard</h1>
+                {% set msg=get_flashed_messages() %}
+                {% if msg %}
+                <p class="alert alert-info" style="font-size: 3rem; margin-bottom: 3rem; font-weight: 900;">{{msg[0]}}</p>
+                {% endif %}
+                <div class="rowC">
+                    <div class="col-1-of-2">
+                        <div class="feature-box">
+                            <i class="fas fa-pen-fancy feature-box__icon"></i>
+                            <h3 class="feature-box__heading">Create a category</h3>
+                            <p class="feature-box__text">
+                                This is where you can create a category.
+                            </p>
+                            <a href="{{url_for('add_category')}}" class="dashboard-btn">Go</a>
+                        </div>
+                    </div>
+
+                    <div class="col-1-of-2">
+                        <div class="feature-box">
+                            <i class="fas fa-wallet feature-box__icon"></i>
+                            <h3 class="feature-box__heading">View all Orders</h3>
+                            <p class="feature-box__text">
+                                This is where you can view all orders placed on the platform.
+                            </p>
+                            <a href="/admin/orders" class="dashboard-btn">Go</a>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="rowC">
+                    
+                    <div class="col-1-of-2">
+                        <div class="feature-box">
+                            <i class="fas fa-stream feature-box__icon"></i>
+                            <h3 class="feature-box__heading">View all Categories</h3>
+                            <p class="feature-box__text">
+                                View all existing categories.
+                            </p>
+                            <a href="{{url_for('admin_viewcat')}}" class="dashboard-btn">Go</a>
+                        </div>
+                    </div>
+                    <div class="col-1-of-2">
+                        <div class="feature-box">
+                            <i class="fas fa-users feature-box__icon"></i>
+                            <h3 class="feature-box__heading">View all Users</h3>
+                            <p class="feature-box__text">
+                                This provides all the users available.
+                            </p>
+                            <a href="{{url_for('all_users')}}" class="dashboard-btn">Go</a>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="rowC">
+                    <div class="col-1-of-2">
+                        <div class="feature-box">
+                            <i class="fas fa-columns feature-box__icon"></i>
+                            <h3 class="feature-box__heading">View all Products</h3>
+                            <p class="feature-box__text">
+                                You can see all products on the platform here.
+                            </p>
+                            <a href="{{url_for('admin_products')}}" class="dashboard-btn">Go</a>
+                        </div>
+                    </div>
+
+                    <div class="col-1-of-2">
+                        <div class="feature-box">
+                            <i class="fas fa-eraser feature-box__icon"></i>
+                            <h3 class="feature-box__heading">Post a product</h3>
+                            <p class="feature-box__text">
+                                Post a product on the homepage here.
+                            </p>
+                            <a href="{{url_for('admin_post')}}" class="dashboard-btn">Go</a>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+                
+            
+                </div>
+            </div>
+        </div>
+
+        <!--End of other -->
+        <footer class="footer mt-5">
+			<div class="footer__img-box">
+				<img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="footer__img">
+			</div>
+			<div class="links">
+				 <div class="footer__link-box">
+					 <h3 class="footer__heading">ABOUT US</h3>
+					 <ul class="footer__nav">
+						 <li class="footer__link"><a class ="link" href="#">About Us</a></li>
+						 <li class="footer__link"><a class ="link" href="#">Terms and Conditions</a></li>
+						 <li class="footer__link"><a class ="link" href="#">Privacy and Cookie notice</a></li>
+				 
+					 </ul>
+				 </div>
+				 <div class="footer__link-box">
+					 <h3 class="footer__heading">LET US HELP YOU</h3>
+					 <ul class="footer__nav">
+						 <li class="footer__link"><a class ="link" href="#">Report a product</a></li>
+						 <li class="footer__link"><a class ="link" href="#">Report a vendor</a></li>
+						 <li class="footer__link"><a class ="link" href="#">How to buy a product</a></li>
+					   
+					 </ul>
+				 </div>
+				 
+			</div>
+		   
+			 <p class="footer__terms">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui mollitia amet aut est error, blanditiis nobis culpa quo reprehenderit tempora nihil! Natus praesentium ex impedit fuga ab excepturi fugit temporibus?</p>
+			 <h3>JOIN US ON</h3>
+			 <div class="icon-box">
+				 <i class="fab fa-facebook icon"></i>
+				 <i class="fab fa-twitter icon"></i>
+				 <i class="fab fa-youtube icon"></i>
+			 </div>
+			 <p class="footer__text">&copy; By Chima Onumaegbu. All rights reserved</p>
+		</footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

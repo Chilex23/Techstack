@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/icon-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Techstack Registration</title>
+</head>
+<body class="bg">
+    <header class="top__container">
+        <div class="logo__container">
+            <img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="logo">
+            <h1 class="login__header" style="font-weight: 900;">Techstack</h1>
+        </div>
+
+    </header>
+    <div class="rowC" style="margin-top: 12rem;">
+		<div class="col-1-of-2 left">
+            <div class="img__container" style="position: fixed;">
+                <img src="{{url_for('static', filename='image/register.png')}}" alt="Tech bro" class="img">
+            </div>     
+		</div>
+		<div class="col-1-of-2 Regform">
+			<div class="Regform__container">
+                {% set msg=get_flashed_messages() %}
+                {% if msg %}
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <p style="font-size: 2.2rem; font-weight: 900;" class="text-center">{{msg[0]}}</p>
+                </div>
+                {% endif %}
+
+                <form action="{{url_for('register')}}" class="form mt-2" method="post">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                    <label for="email" class="Regform__label">Email Id</label>
+                    <input type="email" class="Regform__input" id="email" placeholder="Email Id" name="email" required>
+
+                    <label for="phone" class="Regform__label">Phone No.</label>
+                    <input type="tel" class="Regform__input" id="phone" name="phone" placeholder="Phone No." required>
+                    
+                    <p style="color: red; font-size: 2rem; font-weight: 700; margin-left: 2.4rem;" id="alert"></p>
+                    <label for="username" class="Regform__label">Username</label>
+                    <input type="text" class="Regform__input" id="username" name="username" placeholder="Username" required pattern="^[^0-9][a-zA-Z0-9_]+$" title="Username must not start with a number">
+
+                    <label for="pwd" class="Regform__label">Password</label>
+                    <input type="password" class="Regform__input u-margin-bottom" id="pwd" name="password" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
+
+                    <label for="confirmpwd" class="Regform__label">Confirm Password</label>
+                    <input type="password" class="Regform__input u-margin-bottom" id="confirmpwd" name="password2" placeholder="Confirm Password" required>
+
+                    <label class="Regform__label">
+                        <input type="checkbox" id="regCheck" required>
+                        By Checking this box You agree to our terms and conditions
+                    </label>
+
+                    <button type="submit" class="btn-orange" id="btnsubmit">Sign Up</button>
+                </form>
+                <div class="Regsignup">
+                    <p class="Regsignup__text">Already have an account</p>
+                    <a href="{{url_for('userlogin')}}" class="signup__btn">Log in now</a>
+                </div>
+            </div>
+		</div>
+	</div>
+    <!--<a href="https://storyset.com/technology">Technology illustrations by Storyset</a>-->
+    <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

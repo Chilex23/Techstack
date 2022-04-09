@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/icon-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Orders</title>
+</head>
+<body style="background-color: #eee;">
+    <div class="container-fluid">
+        <div class="row" style="margin-bottom: 2rem;">
+            <nav class="nav">
+                <label for="Logo" class="Logo"><a href="#"><img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="img-fluid logo-brand"></a>Techstack</label>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    Menu <i class="fas fa-bars"></i>
+                </label>
+                <ul class="nav-link">
+                    <li class="nav-link-item"><a href="{{url_for('admin_home')}}">Back to Dashboard</a></li>
+                    <li class="nav-link-item"><a href="{{url_for('admin_logout')}}">Log Out</a></li>
+                </ul>
+                <!---->
+                <input type="checkbox" id="check2">
+                <label class="nav-search" for="check2"><i class="fas fa-search nav-icon"></i></label>
+                <!---->
+               
+           </nav>
+        </div>
+
+        <!-- User bids section -->
+        <div class="row" style="margin-top: 6rem;">
+            <div class="col">
+                
+                <h1 class="product__heading">Orders</h1>
+                {% for order in allorders %}
+                {% for pay in order.pay_deets %}
+                {% if pay.pay_status == "paid" %}
+                <div class="mb-5 pb-2" style="font-size: 2.2rem; font-weight: 900; text-align: center; background-color: #fff; border-bottom: 1px solid black; border-top: 1px solid black;">
+                    <p><span style="margin-left: 2rem;">Ordered By {{order.userobj.user_username}}</span></p>
+                    <p>
+                        <span>Date: {{order.order_date}}</span>
+                        <span>Status: {{order.order_status}}</span>
+                    </p>
+                    {% if order.order_status == 'Processing' %}
+                    <a href="/admin/confirmorder/{{order.order_id}}" class="bid-btn btn-success">Confirm</a>
+                    <a href="/admin/order/{{order.order_id}}">View More Details</a>
+                    <a href="/admin/rejectorder/{{order.order_id}}" class="bid-btn btn-danger">Cancel</a>
+                    {% else %}
+                    <p>This order has been {{order.order_status}}</p>
+                    <a href="/admin/order/{{order.order_id}}">View More Details</a>
+                    {% endif %}
+                </div>
+                {%endif%}
+                {%endfor%}
+                {%endfor%}
+                
+            </div>
+        </div>
+
+        <!-- Received bids -->
+        <div class="row" style="margin-top: 6rem;">
+            <div class="col text-center">
+                <h1 class="product__heading">Hire Orders On Your Products</h1>
+                {% for hire in hire_orders %}
+                {% for i in hire %}
+                <div style="font-size: 2.3rem; font-weight: 900; border-bottom: 1px solid black; background-color: #fff;" class="mb-3">
+                    <div class="bid-image-container pt-4">
+                        <img src="/static/image/products/{{i.dproduct.product_img}}" alt="airpods" class="img-fluid bid-image">
+                        <p>{{i.dproduct.product_name}} <span>Posted by You</span></p>
+                    </div>
+                    {% if i.hireorder_status == 'Pending' %}
+                    <div class="bid-details">
+                        {{i.duser.user_username}} requested to hire this product
+                        <a href="/admin/confirmhire/{{i.hireorder_id}}" class="bid-btn btn-danger">Confirm Order</a>
+                        <a href="/admin/rejecthire/{{i.hireorder_id}}" class="bid-btn btn-success">Reject Order</a>       
+                    </div>
+                    {% elif i.hireorder_status == 'Accepted' %}
+                        {% for x in i.return_obj %}
+                        {% if x.r_status == 'Hired' %}
+                        <div class="bid-details">
+                            You accepted {{i.duser.user_username}} request to hire this product to be returned on {{x.due_date}}
+                        </div>
+                        <div class="bid-btn-container">
+                            <a href="/admin/confirmreturn/{{i.hireorder_id}}" class="bid-btn btn-warning mb-4">Confirm Return</a>
+                        </div>
+                        {%else%}
+                        <div class="bid-details">
+                            This Item has been returned by{{i.duser.user_username}} on {{x.return_date}}
+                        </div>
+                        {%endif%}
+                        {%endfor%}
+                    {% else %}
+                        <div class="bid-details">
+                            You rejected {{i.duser.user_username}} request to hire this product.
+                        </div>
+                    {%endif%}
+                    {%endfor%}
+                </div>
+                {%endfor%}
+               
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

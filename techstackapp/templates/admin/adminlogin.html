@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/icon-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Techstack Admin Login</title>
+</head>
+<body class="bg">
+    <header class="top__container">
+        <div class="logo__container">
+            <img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="logo">
+            <h1 class="login__header" style="font-weight: 900;">Techstack</h1>
+        </div>
+
+    </header>
+    <div class="rowC" style="margin-top: 12rem;">
+		<div class="col-1-of-2 left">
+            <div class="img__container" style="position: fixed;">
+                <img src="{{url_for('static', filename='image/admin.png')}}" alt="admin" class="img">
+            </div>     
+		</div>
+		<div class="col-1-of-2 form">
+			<div class="form__container">
+                {% set msg=get_flashed_messages() %}
+                {% if msg %}
+                <p class="alert alert-info text-center" style="font-size: 3rem; font-weight: 900;">{{msg[0]}}</p>
+                {% else %}
+                <h1 class="form__heading">Admin Log In</h1>
+                {% endif %}
+                <form action="{{url_for('admin_submitlogin')}}" method="post" class="form mt-2">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                    <label for="username" class="form__label">Username</label>
+                    <input type="text" class="form__input" id="username" placeholder="Username" name="username" required>
+                    <label for="pwd" class="form__label">Password</label>
+                    <input type="password" class="form__input u-margin-bottom" id="pwd" placeholder="Password" name="password" required>
+                    <button type="submit" class="btn-orange">Log in</button>
+                </form>
+            </div>
+		</div>
+	</div>
+    <!--<a href="https://storyset.com/technology">Technology illustrations by Storyset</a>-->
+</body>
+</html>

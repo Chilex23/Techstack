@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/icon-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Page Not Found</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <header class="top__container">
+                    <div class="logo__container">
+                        <img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="logo">
+                        <h1 class="login__header" style="font-weight: 900;">Techstack</h1>
+                    </div>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="img__container" style="position: fixed; margin-top: 9rem;">
+                    <img src="{{url_for('static', filename='image/error.png')}}" alt="lost in space" class="img">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 text-center" style="background-color: #fff;">
+                <div class="banner__title">
+                    <h1 class="banner__title-header">We can't seem to find the page you are looking for</h1>
+                    <p class="banner__text">Click the button below to go to the homepage</p>
+                    <a href="{{url_for('home')}}" class="banner__btn">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

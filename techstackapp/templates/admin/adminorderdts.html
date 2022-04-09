@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/icon-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Order Details</title>
+</head>
+<body style="background-color: #eee;">
+    <div class="container-fluid">
+        <div class="row" style="margin-bottom: 2rem;">
+            <nav class="nav">
+                <label for="Logo" class="Logo"><a href="#"><img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="img-fluid logo-brand"></a>Techstack</label>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    Menu <i class="fas fa-bars"></i>
+                </label>
+                <ul class="nav-link">
+                    <li class="nav-link-item"><a href="{{url_for('admin_home')}}">Back to Dashboard</a></li>
+                    <li class="nav-link-item"><a href="{{url_for('admin_logout')}}">Log Out</a></li>
+                </ul>
+                <!---->
+                <input type="checkbox" id="check2">
+                <label class="nav-search" for="check2"><i class="fas fa-search nav-icon"></i></label>
+                <!---->
+                
+           </nav>
+        </div>
+
+        <!-- User bids section -->
+        <div class="row" style="margin-top: 6rem;">
+            <div class="col">
+                <h1 class="product__heading">Order Details</h1>
+                
+                <div class="#" style="font-size: 2.2rem; font-weight: 900;">
+                  
+                    <p>
+                        <span>Date: {{order_deet.order_date}}</span>
+                        <span>Status: {{order_deet.order_status}}</span>
+                    </p>
+                    <div class="#">
+                        <table class="table table-striped" width="80%" style="font-size: 2.2rem; font-weight: 900;">
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                                
+                            </tr>
+        
+                        {% for m in order_deet.order_deets%}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td>{{m.prodobj.product_name}}</td>
+                            <td>{{m.quantity}}</td>
+                            <td class="cp">{{m.orderdet_amt}}</td>
+                            
+                        </tr>
+                        {% endfor %}
+                        </table>
+                    </div>
+                    <div class="#">
+                        <span>{{order_status}}</span>
+                    </div>
+                </div>
+                <p style="font-size: 3rem; font-weight: 900;">Shipping Address: {{order_deet.order_address}}</p>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+.bid-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+    margin: 2rem auto;
+    font-size: 2.4rem;
+    font-weight: 900;
+    background-color: #fff;
+    height: 10rem;
+    padding: 9rem 5rem;
+   
+}
+
+.bid-image-container {
+    align-self: center;
+}
+
+.bid-image {
+    height: 10rem;
+    border-radius: 5px;
+}
+
+.bid-tags {
+    background-color: var(--color-tertiary);
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.bid-tags--1 {
+    background-color: red;
+}
+
+.bid-tags--2 {
+    background-color: #55c57a;
+}
+
+.bid-btn,
+.bid-btn:link,
+.bid-btn:visited {
+    text-decoration: none;
+    margin-right: 1rem;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+}
+
+#cat__img {
+    width:260px;
+    height:144px
+}
+
+@media only screen and (max-width: 790px) {
+    .bid-container {
+        width: 95%;  
+        height: 30rem;
+    }
+ }
+
+@media only screen and (max-width: 600px) {
+    .bid-container {
+        transform: skewX(0deg);
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .bid-container > * {
+        transform: skewX(0deg);
+    }
+
+    .bid-image-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bid-image {
+        height: 20rem;
+    }
+
+    #cat__img {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    #prod__img {
+        height: 10rem;
+    }
+ }

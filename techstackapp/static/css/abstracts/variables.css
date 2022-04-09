@@ -1,0 +1,13 @@
+:root {
+    --color-primary-1: #0466C8;
+    --color-primary-2: #0353A4;
+    --color-secondary-1: #001233;
+    --color-tertiary: #ff7730;
+
+    --color-grey-light-1: #979DAC;
+    --color-grey-light-2: #7D8597;
+
+    --default-font-size: 1.6rem;
+    --gutter-horizontal: 6rem;
+}
+

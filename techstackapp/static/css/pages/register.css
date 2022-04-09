@@ -1,0 +1,129 @@
+.top__container {
+    height: 7rem;
+    background-color:#fff;
+    width: 100%;
+    margin-bottom: 5rem;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+}
+
+.logo__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.logo {
+    height: 8rem;
+    border-radius: 50%;
+}
+
+.login__header {
+    background-image: linear-gradient(to right, var(--color-primary-1), var(--color-primary-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-left: 1rem;
+    font-size: 4rem;
+    
+}
+
+.Regform {
+    height: 100vh;
+    margin-top: -3rem;
+}
+
+.Regform__container {
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem var(--color-grey-light-2);
+    border-radius: 10px;
+}
+
+.form__heading {
+    font-weight: 800;
+    font-size: 3.5rem;
+    padding-bottom: 2rem;
+    background-image: linear-gradient(to right, var(--color-primary-1), var(--color-primary-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-top: 1rem;
+    text-transform: uppercase;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.Regform__label {
+    display: block;
+    width: 90%;
+    font-weight: 600;
+    margin: 0 auto;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.Regform__input {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    font-family: inherit;
+    height: 5rem;
+    border: 1px solid var(--color-grey-light-2);
+    font-size: 2rem;
+    font-weight: 600;
+    border-radius: 5px;
+    padding-left: .5rem;
+}
+
+.Regform__input::-webkit-input-placeholder {
+    color: var(--color-grey-light-2);
+}
+
+.Regform__input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(#000, .1);
+    border-bottom: 3px solid #55c57a;
+}
+
+.Regform__input:invalid {
+    border-bottom: 3px solid var(--color-tertiary);
+}
+
+.Regsignup {
+    width: 90%;
+    margin: 1rem auto;
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.Regsignup__text {
+    font-weight: 900;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#reg {
+    margin: 10rem auto 0 auto;
+    width: 60%;
+}
+
+@media only screen and (max-width: 650px) {
+    .Regform {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .left {display: none;}
+
+    #reg {
+      width: 100%;      
+    }
+ }

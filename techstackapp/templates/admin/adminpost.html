@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" hef="{{url_for('static', filename='css/icon-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Post Product</title>
+</head>
+<body style="background-color: #eee;">
+    <div class="container-fluid">
+        <div class="row" style="margin-bottom: 2rem;">
+            <nav class="nav">
+                <label for="Logo" class="Logo"><a href="#"><img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="img-fluid logo-brand"></a>Techstack</label>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    Menu <i class="fas fa-bars"></i>
+                </label>
+                <ul class="nav-link">
+                    <li class="nav-link-item"><a href="{{url_for('admin_home')}}">Back to Dashboard</a></li>
+                    <li class="nav-link-item"><a href="{{url_for('admin_logout')}}">Log Out</a></li>
+                </ul>
+           </nav>
+        </div>
+
+       
+        <div class="row post mt-4">
+            <div class="col-12 col-md-8 mx-auto mt-5">
+                {% set msg=get_flashed_messages() %}
+                    {% if msg %}
+                    <div class="alert alert-info alert-dismissible fade show mt-5" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <p style="font-size: 2.2rem; font-weight: 900;" class="text-center">{{msg[0]}}</p>
+                    </div>
+                    {% endif %}
+                    <h1 class="product__heading">Post Product</h1>
+                <form action="{{url_for('admin_post')}}" enctype="multipart/form-data" method="post">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                    <label class="form-label form__label" for="name">Product name</label>
+                    <input type="text" class="form__input form-control" name="name" id="name" required>
+                    <label class="form-label form__label mt-2" for="desc">Product description</label>
+                    <textarea class="form__text form-control" id="desc" name="desc" required></textarea>
+
+                    <label class="form-label form__label mt-2" for="type">Product Type</label>
+                    <input type="radio" id="hire" name="prod_type" value="Hire" style="margin-left: 4.7rem; font-weight: 900;">
+                    <label for="hire">For Hire</label>
+                    <input type="radio" id="sale" name="prod_type" value="Sale" style="margin-left: 4.7rem; font-weight: 900;">
+                    <label for="sale">For Sale</label>
+
+                    <div id="hirebox">
+                        <label class="form-label form__label" for="name">Days For Hire Period(In numbers)</label>
+                        <input type="numeric" class="form__input form-control" name="hperiod" id="hperiod" pattern="[0-9]+" title="please enter number only">
+                    </div>
+
+                    <label class="form-label form__label mt-2" for="type">Product Category</label>
+                    <select class="form-input" id="type" name="prod_cat" style="margin-left: 4.7rem; font-weight: 900;">
+                        {% for c in category %}
+                        <option style="font-weight: 900;" value="{{c.cat_id}}">{{c.cat_name}}</option>
+                        {% endfor %}
+                    </select>
+
+                    <div id="price">
+                        <label class="form-label form__label mt-2" for="price">Price (In Numbers)</label>
+                        <input type="numeric" class="form__input form-control" name="price" id="price" pattern="[0-9]+" title="please enter number only"></input>
+                    </div>
+                    
+                    <label class="form-label form__label mt-2" for="img">Choose Product Image</label>
+                    <input type="file" class="form__input form-control"  name="img" id="img" required></input>
+                    <button class="btn btn-orange d-block mt-3" style="border: none;">POST PRODUCT</button>
+                </form>
+            </div>
+        </div>
+
+         <!---->
+         <footer class="footer">
+            <div class="footer__img-box">
+                <img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="footer__img">
+            </div>
+            <div class="links">
+                 <div class="footer__link-box">
+                     <h3 class="footer__heading">ABOUT US</h3>
+                     <ul class="footer__nav">
+                         <li class="footer__link"><a class ="link" href="#">About Us</a></li>
+                         <li class="footer__link"><a class ="link" href="#">Terms and Conditions</a></li>
+                         <li class="footer__link"><a class ="link" href="#">Privacy and Cookie notice</a></li>
+                 
+                     </ul>
+                 </div>
+                 <div class="footer__link-box">
+                     <h3 class="footer__heading">LET US HELP YOU</h3>
+                     <ul class="footer__nav">
+                         <li class="footer__link"><a class ="link" href="#">Report a product</a></li>
+                         <li class="footer__link"><a class ="link" href="#">Report a vendor</a></li>
+                         <li class="footer__link"><a class ="link" href="#">How to buy a product</a></li>
+                       
+                     </ul>
+                 </div>
+                 
+            </div>
+           
+             <p class="footer__terms">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui mollitia amet aut est error, blanditiis nobis culpa quo reprehenderit tempora nihil! Natus praesentium ex impedit fuga ab excepturi fugit temporibus?</p>
+             <h3>JOIN US ON</h3>
+             <div class="icon-box">
+                <i class="fab fa-facebook icon"></i>
+                <i class="fab fa-twitter icon"></i>
+                <i class="fab fa-youtube icon"></i>
+             </div>
+             <p class="footer__text">&copy; By Chima Onumaegbu. All rights reserved</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+	<script src="{{url_for('static', filename='js/app.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

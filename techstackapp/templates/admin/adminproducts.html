@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/icon-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Admin Posted Products</title>
+</head>
+<body style="background-color: #eee;">
+    <div class="container-fluid">
+        <div class="row" style="margin-bottom: 2rem;">
+            <nav class="nav">
+                <label for="Logo" class="Logo"><a href="#"><img src="{{url_for('static', filename='image/techstack.png')}}" alt="Logo" class="img-fluid logo-brand"></a>Techstack</label>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    Menu <i class="fas fa-bars"></i>
+                </label>
+                <ul class="nav-link">
+                    <li class="nav-link-item"><a href="{{url_for('admin_home')}}">Back to Dashboard</a></li>
+                    <li class="nav-link-item"><a href="{{url_for('admin_logout')}}">Log Out</a></li>
+                </ul>
+           </nav>
+        </div>
+
+
+        <!-- User bids section -->
+        <div class="row" style="margin-top: 6rem;">
+            <div class="col">
+                <h1 class="product__heading">Your Posted Products</h1>
+                {% for i in admin_products %}
+                <div class="bid-container">
+                    <div class="bid-image-container">
+                        <img src="/static/image/products/{{i.product_img}}" alt="airpods" class="img-fluid bid-image d-block mx-auto" id="prod__img">
+                        <p class="text-center">{{i.product_name}} <span>Posted by Admin</span></p>
+                    </div>
+                    <div class="bid-details">
+                        <b>Product Type: </b> {{i.product_type}}
+                    </div>
+                    <div class="bid-tags">
+                        {% if i.product_status == 'In session' %}
+                        <span>{{i.product_status}}</span>
+                        {%else%}
+                        <span>Out of session</span>
+                        {%endif%}
+                    </div>
+                </div>
+                {% endfor %}
+               
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

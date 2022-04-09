@@ -1,0 +1,9 @@
+.dashboard-btn,
+.dashboard-btn:link,
+.dashboard-btn:visited {
+    text-decoration: none;
+    padding: 1rem 3rem;
+    background-color: var(--color-tertiary);
+    color: #fff;
+    border-radius: 1rem;
+}
