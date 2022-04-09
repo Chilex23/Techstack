@@ -3,7 +3,7 @@ class Config(object):
     USERNAME="SAMPLE"
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI="mysql+mysqlconnector://root@127.0.0.1/techstack"
+    SQLALCHEMY_DATABASE_URI="Connection Parameters"
     SQLALCHEMY_TRACK_MODIFICATIONS=True
     MERCHANT_ID="t98765@0"
 
