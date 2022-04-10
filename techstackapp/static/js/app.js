@@ -77,7 +77,8 @@ $( window ).resize(response);
           data: tosend,
           success: function(server_rsp) {
             window.sessionStorage.setItem('cartitems', server_rsp);
-            $("#c").text(server_rsp)
+            console.log(server_rsp)
+            $("span#c").text(server_rsp.toString())
           },
           error: function(err) {
               console.log(err)
@@ -102,7 +103,7 @@ $( window ).resize(response);
         data: tosend,
         success: function(server_rsp) {
           window.localStorage.setItem('cartitems', server_rsp);
-          $("#c").text(server_rsp)
+          $("span#c").text(server_rsp)
         },
         error: function(err) {
             console.log(err)

@@ -16,7 +16,6 @@ def home():
     userdeets = User.query.get(loggedin)
     all_products = Products.query.all()
     flash_sales = Products.query.filter(Products.product_price<=40000, Products.product_type != 'Hire').all()
-    session['cart'] = []
     cart = session.get('cart')
     cart_len = len(cart)
     return render_template("user/index.html", all_products=all_products, userdeets=userdeets, cart_len=cart_len, flash_sales=flash_sales)
@@ -43,7 +42,7 @@ def submit_userlogin():
                 id = deets.user_id
                 session['loggedin'] = id
                 session['cart'] = []
-                return redirect('/')
+                return redirect('/userhome')
             else:
                 #Keep a failed message in flash, then redirect to login page
                 flash('Invalid Credentials')

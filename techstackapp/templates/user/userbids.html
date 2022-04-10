@@ -148,7 +148,7 @@
                 <div class="bid-container">
                     
                     <div class="bid-image-container" style="padding-top: 2rem;">
-                        <img src="/static/image/products/{{x.dproduct.product_img}}" alt="airpods" class="img-fluid bid-image d-block mx-auto">
+                        <img src="/static/image/products/{{x.dproduct.product_img}}" id="bid" alt="airpods" class="img-fluid bid-image d-block mx-auto">
                         <p>{{x.dproduct.product_name}} 
                             {% if x.dproduct.userobj == None %}
                             <span>Posted by {{x.dproduct.adminobj.admin_name}}</span>
@@ -196,7 +196,7 @@
                     {% for i in hire %}
                     <div style="font-size: 2.3rem; font-weight: 900; border-bottom: 1px solid black; background-color: #fff;" class="mb-3">
                         <div class="bid-image-container pt-4">
-                            <img src="/static/image/products/{{i.dproduct.product_img}}" alt="airpods" class="img-fluid bid-image d-block mx-auto">
+                            <img src="/static/image/products/{{i.dproduct.product_img}}" alt="airpods" id="bid" class="img-fluid bid-image d-block mx-auto">
                             <p>{{i.dproduct.product_name}} <span>Posted by You</span></p>
                         </div>
                         {% if i.hireorder_status == 'Pending' %}

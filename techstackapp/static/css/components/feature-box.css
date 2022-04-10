@@ -30,7 +30,7 @@
 
 @media only screen and (max-width: 950px) {
    .feature-box {
-       font-size: 2rem;
+       font-size: 2.2rem;
    }
 
    .feature-box__icon {
@@ -38,7 +38,7 @@
    }
 
    .feature-box__heading {
-       font-size: 2rem;
+       font-size: 2.2rem;
    }
 }
 
@@ -52,7 +52,7 @@
 
 @media only screen and (max-width: 850px) {
     .feature-box {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
         padding: 1.8rem;
     }
  
@@ -61,7 +61,7 @@
     }
  
     .feature-box__heading {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
 
     :root {

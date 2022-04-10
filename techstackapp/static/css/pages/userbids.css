@@ -62,6 +62,12 @@
         transform: skewX(0deg);
         flex-direction: column;
         justify-content: center;
+        height: 40rem;
+    }
+
+    #bid {
+        width: 60vw;
+        height: 30vh;
     }
 
     .bid-container > * {
